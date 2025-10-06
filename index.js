@@ -52,6 +52,33 @@ app.post("/cats", (req, res) => {
     res.status(201).json(newCat);
   });
   
+  app.put("/cats/:id", (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const cats = loadCats();
+    const idx = cats.findIndex(c => c.id === id);
+  
+    if (idx === -1) {
+      return res.status(404).json({ error: "Kissaa ei löytynyt" });
+    }
+  
+    const updates = req.body;
+  
+    // yksinkertainen validointi
+    if ("age" in updates && typeof updates.age !== "number") {
+      return res.status(400).json({ error: "age tulee olla numero" });
+    }
+  
+    const allowed = ["name", "breed", "age", "color", "personality", "owner"];
+    const updated = { ...cats[idx] };
+    for (const key of allowed) {
+      if (updates[key] !== undefined) updated[key] = updates[key];
+    }
+    updated.id = cats[idx].id; // id ei muutu
+  
+    cats[idx] = updated;
+    saveCats(cats);
+    res.json(updated);
+  });  
 
 app.listen(PORT, () => {
   console.log(`Serveri kuuntelee portissa ${PORT}`);
