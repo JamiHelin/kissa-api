@@ -18,7 +18,10 @@ function loadCats() {
     throw err;
   }
 }
-
+function saveCats(cats) {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(cats, null, 2), "utf8");
+  }
+  
 // Testi-juuri
 app.get("/", (req, res) => {
   res.send("Kissa-API on käynnissä 🐱");
@@ -29,6 +32,26 @@ app.get("/cats", (req, res) => {
   const cats = loadCats();
   res.json(cats);
 });
+
+// CREATE: POST lisää uusi kissa
+app.post("/cats", (req, res) => {
+    const { name, breed, age, color, personality, owner } = req.body;
+  
+    // kevyt validointi
+    if (!name || !breed || typeof age !== "number" || !color || !personality || !owner) {
+      return res.status(400).json({ error: "Puuttuvia tai virheellisiä kenttiä" });
+    }
+  
+    const cats = loadCats();
+    const nextId = cats.length ? Math.max(...cats.map(c => c.id)) + 1 : 1;
+  
+    const newCat = { id: nextId, name, breed, age, color, personality, owner };
+    cats.push(newCat);
+    saveCats(cats);
+  
+    res.status(201).json(newCat);
+  });
+  
 
 app.listen(PORT, () => {
   console.log(`Serveri kuuntelee portissa ${PORT}`);

@@ -1,29 +1,38 @@
 [
-    {
-      "id": 1,
-      "name": "Kullervo",
-      "breed": "Bengalin kissa",
-      "age": 3,
-      "color": "Ruskea ja beige",
-      "personality": "Utelias ja äänekäs",
-      "owner": "Maija Meikäläinen"
-    },
-    {
-      "id": 2,
-      "name": "Mirri",
-      "breed": "Persialainen",
-      "age": 5,
-      "color": "Valkoinen",
-      "personality": "Rauhallinen ja seuralllinen",
-      "owner": "Pekka Puupää"
-    },
-    {
-      "id": 3,
-      "name": "Viiru",
-      "breed": "Norjalainen metsäkissa",
-      "age": 2,
-      "color": "Harmaa-raidallinen",
-      "personality": "Leikkisä ja energinen",
-      "owner": "Anna Korhonen"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Kullervo",
+    "breed": "Bengalin kissa",
+    "age": 3,
+    "color": "Ruskea ja beige",
+    "personality": "Utelias ja äänekäs",
+    "owner": "Maija Meikäläinen"
+  },
+  {
+    "id": 2,
+    "name": "Mirri",
+    "breed": "Persialainen",
+    "age": 5,
+    "color": "Valkoinen",
+    "personality": "Rauhallinen ja seuralllinen",
+    "owner": "Pekka Puupää"
+  },
+  {
+    "id": 3,
+    "name": "Viiru",
+    "breed": "Norjalainen metsäkissa",
+    "age": 2,
+    "color": "Harmaa-raidallinen",
+    "personality": "Leikkisä ja energinen",
+    "owner": "Anna Korhonen"
+  },
+  {
+    "id": 4,
+    "name": "Karvinen",
+    "breed": "Maatiaiskissa",
+    "age": 1,
+    "color": "Musta",
+    "personality": "Vilkas ja utelias",
+    "owner": "Jami"
+  }
+]
