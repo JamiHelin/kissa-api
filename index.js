@@ -95,6 +95,18 @@ app.post("/cats", (req, res) => {
     saveCats(cats);               // tallenna tiedostoon
     return res.status(204).send(); // No Content
   });
+
+  // GET /cats/breed/:breed → kaikki tietyn rodun kissat
+app.get("/cats/breed/:breed", (req, res) => {
+    const breedParam = req.params.breed;
+    const norm = (s) => s.toString().trim().toLowerCase();
+  
+    const cats = loadCats();
+    const filtered = cats.filter(c => norm(c.breed) === norm(breedParam));
+  
+    return res.json(filtered);
+  });
+  
   
 app.listen(PORT, () => {
   console.log(`Serveri kuuntelee portissa ${PORT}`);
