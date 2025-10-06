@@ -52,6 +52,7 @@ app.post("/cats", (req, res) => {
     res.status(201).json(newCat);
   });
   
+  // UPDATE-toiminto
   app.put("/cats/:id", (req, res) => {
     const id = parseInt(req.params.id, 10);
     const cats = loadCats();
@@ -80,6 +81,21 @@ app.post("/cats", (req, res) => {
     res.json(updated);
   });  
 
+  // DELETE-toiminto
+  app.delete("/cats/:id", (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const cats = loadCats();
+    const idx = cats.findIndex(c => c.id === id);
+  
+    if (idx === -1) {
+      return res.status(404).json({ error: "Kissaa ei löytynyt" });
+    }
+  
+    cats.splice(idx, 1);          // poista taulukosta
+    saveCats(cats);               // tallenna tiedostoon
+    return res.status(204).send(); // No Content
+  });
+  
 app.listen(PORT, () => {
   console.log(`Serveri kuuntelee portissa ${PORT}`);
 });

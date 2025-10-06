@@ -25,14 +25,5 @@
     "color": "Harmaa-raidallinen",
     "personality": "Leikkisä ja energinen",
     "owner": "Anna Korhonen"
-  },
-  {
-    "id": 4,
-    "name": "Karvinen",
-    "breed": "Maatiaiskissa",
-    "age": 1,
-    "color": "Musta",
-    "personality": "Vilkas ja utelias",
-    "owner": "Jami"
   }
 ]
